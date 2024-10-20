@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ResumeManagement.Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<h2>Employee Information</h2>
+<div class="d-flex justify-content-end mb-2">
+    <a href="@Url.Action("Create","Employees")" id="btnCreate" class="btn btn-outline-primary">Create New Employee</a>
+</div>
+<div>
+    @foreach (var emp in Model)
+    {
+        <div class="card mb-2">
+            <div class="card-header d-flex justify-content-between">
+                <div>
+                    <img src="@emp.Picture" width="50" height="50" class="rounded" /><br />
+                    <label class="mr-2"><b>Employee Name: @Html.DisplayFor(x => emp.EmployeeName)</b></label><br />
+                    <label class="mr-2"><b>Join Date: @Html.DisplayFor(x => emp.JoinDate)</b></label><br />
+                    <label class="mr-2"><b>Active: @Html.DisplayFor(x => emp.isActive)</b></label><br />
+                </div>
+                <div>
+                    <a href="@Url.Action("Edit","Employees",new {id=emp.EmployeeId})" id="btnEditEntry" class="btn btn-outline-success">Edit</a>
+                    <a href="@Url.Action("Delete","Employees",new {id=emp.EmployeeId})" id="btnDeleteEntry" class="btn btn-outline-danger">Delete</a>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-striped table-sm">
+                    <thead class="table-primary">
+                        <tr>
+                            <th>Qualification Id</th>
+                            <th>Qualification Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in emp.QualificationEntries)
+                        {
+                            <tr>
+                                <td>@Html.DisplayFor(x => item.Qualification.QualificationId)</td>
+                                <td>@Html.DisplayFor(x => item.Qualification.QualificationName)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</div>
+

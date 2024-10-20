@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <ul>
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+        <li>@Html.ActionLink("Qualification", "Index", "Qualifications")</li>
+        <li>@Html.ActionLink("Employee", "Index", "Employees")</li>
+    </ul>
+    <div class="container">
+        @RenderBody()
+        <hr />
+    </div>
+    <script src="~/Scripts/jquery-3.7.1.js"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+</body>
+</html>
